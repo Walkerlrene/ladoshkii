@@ -4,20 +4,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Студия творчества «Ладошки»</title>
   <style>
+    /* ===== ОСНОВНЫЕ СБРОСЫ И БАЗОВЫЕ СТИЛИ ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    /* Плавная прокрутка по якорям */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-      background-color: #fdf8f7;  /* нежный тёплый фон */
+      background-color: #fdf8f7;  /* очень светлый тёплый фон (нежный) */
       color: #4e4e4e;
       line-height: 1.6;
     }
 
-    /* мягкие, пастельные тона + акцент (коралловый) */
+    /* Для всех секций, на которые ведут якоря, задаём отступ, чтобы заголовок не прятался под липкий хедер */
+    [id] {
+      scroll-margin-top: 80px;   /* высота header + небольшой запас */
+    }
+
     h1, h2, h3 {
       font-weight: 400;
       letter-spacing: 0.02em;
@@ -29,7 +39,7 @@
       padding: 3rem 5%;
     }
 
-    /* ===== ХЕДЕР ===== */
+    /* ===== ХЕДЕР (ШАПКА) ===== */
     header {
       background: #ffffff;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
@@ -43,12 +53,14 @@
       z-index: 10;
     }
 
+    /* Блок с логотипом и названием студии */
     .logo-block {
       display: flex;
       align-items: center;
       gap: 1rem;
     }
 
+    /* Само изображение логотипа (файл Logo21.png) */
     .logo-block img {
       height: 70px;
       width: auto;
@@ -59,6 +71,7 @@
       transform: scale(1.02);
     }
 
+    /* Название студии рядом с логотипом */
     .studio-name {
       font-size: 2rem;
       font-weight: 300;
@@ -68,6 +81,7 @@
       padding-left: 1rem;
     }
 
+    /* Навигационное меню (ссылки на разделы страницы) */
     nav ul {
       display: flex;
       list-style: none;
@@ -84,8 +98,9 @@
       border-bottom: 2px solid transparent;
     }
 
+    /* Акцентный цвет при наведении — мягкий коралловый */
     nav a:hover {
-      color: #f08a7a;  /* акцент — нежный коралл */
+      color: #f08a7a;
       border-bottom-color: #f5c4b4;
     }
 
@@ -99,6 +114,7 @@
       padding-bottom: 0.8rem;
     }
 
+    /* Декоративная полоска под заголовком */
     .section-title::after {
       content: '';
       display: block;
@@ -109,7 +125,7 @@
       border-radius: 4px;
     }
 
-    /* ===== БЛОК О НАС ===== */
+    /* ===== БЛОК «О НАС» ===== */
     .about {
       background: #ffffffd9;
       backdrop-filter: blur(2px);
@@ -128,7 +144,7 @@
       line-height: 1.7;
     }
 
-    /* ===== КАРТОЧКИ НАПРАВЛЕНИЙ ===== */
+    /* ===== БЛОК С КАРТОЧКАМИ НАПРАВЛЕНИЙ ===== */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -136,6 +152,7 @@
       margin: 2.5rem 0 1rem;
     }
 
+    /* Одна карточка направления */
     .card {
       background: #ffffff;
       border-radius: 30px;
@@ -149,7 +166,7 @@
     .card:hover {
       transform: translateY(-8px);
       box-shadow: 0 20px 35px rgba(200, 150, 130, 0.15);
-      border-color: #f5c4b4;
+      border-color: #f5c4b4;  /* акцентная обводка */
     }
 
     .card h3 {
@@ -164,7 +181,7 @@
       font-size: 1.1rem;
     }
 
-    /* ===== ПРЕПОДАВАТЕЛИ (КРУГЛЫЕ АВАТАРКИ-ЗАГЛУШКИ) ===== */
+    /* ===== БЛОК ПРЕПОДАВАТЕЛЕЙ (КРУГЛЫЕ АВАТАРЫ-ЗАГЛУШКИ) ===== */
     .teachers-wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -180,11 +197,12 @@
       width: 160px;
     }
 
+    /* Круглая заглушка фото преподавателя */
     .teacher-photo {
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      background: #e4d5cd;  /* нейтральный фон-заглушка */
+      background: #e4d5cd;  /* нейтральный фон */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -197,7 +215,7 @@
     }
 
     .teacher-item:hover .teacher-photo {
-      border-color: #f5b4a0;
+      border-color: #f5b4a0;  /* акцент */
       transform: scale(1.02);
     }
 
@@ -212,7 +230,7 @@
       font-size: 1rem;
     }
 
-    /* ===== КОНТАКТЫ И КАРТА ===== */
+    /* ===== КОНТАКТНЫЙ БЛОК (ИНФОРМАЦИЯ + КАРТА) ===== */
     .contact-section {
       background: #fef6f2;  /* очень светлый персик */
       border-radius: 50px 50px 20px 20px;
@@ -226,10 +244,12 @@
       align-items: flex-start;
     }
 
+    /* Левая колонка с контактными данными */
     .contact-details {
       flex: 1 1 280px;
     }
 
+    /* Каждая строка контакта (телефон, адрес и т.д.) */
     .contact-details p {
       margin: 1.3rem 0;
       display: flex;
@@ -242,6 +262,7 @@
       box-shadow: 0 2px 8px #f2ded5;
     }
 
+    /* Эмодзи-иконки в контактах */
     .contact-details i {
       font-style: normal;
       font-size: 1.8rem;
@@ -249,6 +270,7 @@
       color: #e6a692;
     }
 
+    /* Правая колонка — карта */
     .map-container {
       flex: 2 1 500px;
       height: 350px;
@@ -265,7 +287,7 @@
       display: block;
     }
 
-    /* ===== ФУТЕР ===== */
+    /* ===== ПОДВАЛ (ФУТЕР) ===== */
     footer {
       background: #e9dad2;  /* нежная светлая охра */
       color: #5d534b;
@@ -275,6 +297,7 @@
       font-size: 1.1rem;
     }
 
+    /* Иконки социальных сетей (заглушки) */
     .social-links {
       margin: 1rem 0 0.3rem;
     }
@@ -289,11 +312,11 @@
     }
 
     .social-links a:hover {
-      color: #f08a7a;  /* акцент */
+      color: #f08a7a;  /* акцентный цвет */
       transform: translateY(-3px);
     }
 
-    /* мелочи */
+    /* Вспомогательные элементы */
     .highlight {
       color: #e6a692;
       font-weight: 400;
@@ -306,6 +329,7 @@
       margin: 2rem 0;
     }
 
+    /* Адаптация для планшетов и мобильных */
     @media (max-width: 800px) {
       header {
         flex-direction: column;
@@ -337,49 +361,56 @@
 </head>
 <body>
 
-<!-- ХЕДЕР с логотипом -->
+<!-- ==================== ХЕДЕР (ШАПКА САЙТА) ==================== -->
 <header>
+  <!-- Блок с логотипом и названием -->
   <div class="logo-block">
-    <!-- приложенное изображение Logo21.png -->
-    <img src="Logo21.png" alt="Логотип студии творчества и каллиграфии">
+    <!-- Подключаем файл логотипа (должен лежать в той же папке, что и HTML) -->
+    <img src="Logo21.png" alt="Логотип: Лаборатория студия творчества и каллиграфии">
     <span class="studio-name">Ладошки</span>
   </div>
+
+  <!-- Навигация — ссылки на разделы страницы (работают через якоря) -->
   <nav>
     <ul>
-      <li><a href="#">Главная</a></li>
-      <li><a href="#">О нас</a></li>
-      <li><a href="#">Занятия</a></li>
-      <li><a href="#">Педагоги</a></li>
-      <li><a href="#">Контакты</a></li>
+      <li><a href="#top">Главная</a></li>            <!-- ведёт в начало страницы -->
+      <li><a href="#about">О нас</a></li>            <!-- блок с описанием студии -->
+      <li><a href="#activities">Занятия</a></li>      <!-- блок с направлениями -->
+      <li><a href="#teachers">Педагоги</a></li>       <!-- блок с преподавателями -->
+      <li><a href="#contacts">Контакты</a></li>       <!-- блок с контактами и картой -->
     </ul>
   </nav>
 </header>
 
 <main>
-  <!-- БЛОК 1: О студии (болванка под лого уже использована, здесь текст) -->
-  <section class="container">
+  <!-- ==================== БЛОК 1: О СТУДИИ (с якорем "about") ==================== -->
+  <section class="container" id="about">
     <div class="about">
       <h2 class="section-title">Добро пожаловать в «Ладошки»</h2>
-      <p>Мы — уютная студия, где дети знакомятся с миром творчества, каллиграфии и искусства.  Мягкая атмосфера, опытные педагоги и авторские программы помогают раскрыть таланты каждого ребёнка.</p>
+      <p>Мы — уютная студия, где дети знакомятся с миром творчества, каллиграфии и искусства. Мягкая атмосфера, опытные педагоги и авторские программы помогают раскрыть таланты каждого ребёнка.</p>
     </div>
   </section>
 
-  <!-- БЛОК 2: Направления (карточки) -->
-  <section class="container">
+  <!-- ==================== БЛОК 2: НАПРАВЛЕНИЯ (якорь "activities") ==================== -->
+  <section class="container" id="activities">
     <h2 class="section-title">Чем мы занимаемся</h2>
     <div class="cards-grid">
+      <!-- Карточка 1: Рисование -->
       <div class="card">
         <h3>🖌️ Рисование</h3>
         <p>Акварель, гуашь, пастель — развиваем фантазию и чувство цвета.</p>
       </div>
+      <!-- Карточка 2: Каллиграфия -->
       <div class="card">
         <h3>✍️ Каллиграфия</h3>
         <p>Красивый почерк, острые перья и буквы с душой. Для детей от 7 лет.</p>
       </div>
+      <!-- Карточка 3: Лепка -->
       <div class="card">
         <h3>🧶 Лепка</h3>
         <p>Глина, пластилин, масса для лепки — создаём объёмные истории.</p>
       </div>
+      <!-- Карточка 4: Арт-терапия -->
       <div class="card">
         <h3>📖 Арт-терапия</h3>
         <p>Мягкие занятия для гармоничного развития и снятия напряжения.</p>
@@ -387,25 +418,29 @@
     </div>
   </section>
 
-  <!-- БЛОК 3: Преподаватели (кружки-заглушки) -->
-  <section class="container">
+  <!-- ==================== БЛОК 3: ПРЕПОДАВАТЕЛИ (якорь "teachers") ==================== -->
+  <section class="container" id="teachers">
     <h2 class="section-title">Наши педагоги</h2>
     <div class="teachers-wrapper">
+      <!-- Преподаватель 1 -->
       <div class="teacher-item">
         <div class="teacher-photo">👩‍🎨</div>
         <h4>Анна</h4>
         <p>художник, каллиграф</p>
       </div>
+      <!-- Преподаватель 2 -->
       <div class="teacher-item">
         <div class="teacher-photo">🧑‍🏫</div>
         <h4>Елена</h4>
         <p>керамист, скульптор</p>
       </div>
+      <!-- Преподаватель 3 -->
       <div class="teacher-item">
         <div class="teacher-photo">👩‍🦰</div>
         <h4>Мария</h4>
         <p>арт-терапевт</p>
       </div>
+      <!-- Преподаватель 4 -->
       <div class="teacher-item">
         <div class="teacher-photo">👨‍🎨</div>
         <h4>Дмитрий</h4>
@@ -414,11 +449,11 @@
     </div>
   </section>
 
-  <!-- БЛОК КОНТАКТЫ + КАРТА -->
-  <section class="container contact-section">
+  <!-- ==================== БЛОК 4: КОНТАКТЫ + КАРТА (якорь "contacts") ==================== -->
+  <section class="container contact-section" id="contacts">
     <h2 class="section-title">Контакты</h2>
     <div class="contact-flex">
-      <!-- левая часть: контактные данные -->
+      <!-- Левая колонка: детальная контактная информация -->
       <div class="contact-details">
         <p><i>📍</i> ул. Творческая, д. 15, Москва</p>
         <p><i>📞</i> +7 (495) 123-45-67</p>
@@ -427,20 +462,21 @@
         <p><i>📷</i> @ladoshki_studio</p>
       </div>
 
-      <!-- правая часть: интерактивная карта (OpenStreetMap) -->
+      <!-- Правая колонка: интерактивная карта (OpenStreetMap с меткой) -->
       <div class="map-container">
-        <!-- Вставка карты с меткой в центре Москвы (пример) -->
-        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=37.6184%2C55.7512%2C37.6284%2C55.7612&amp;layer=mapnik&amp;marker=55.7562%2C37.6234" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="карта с меткой студии Ладошки"></iframe>
+        <!-- Карта с меткой в центре Москвы (примерное местоположение студии) -->
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=37.6184%2C55.7512%2C37.6284%2C55.7612&amp;layer=mapnik&amp;marker=55.7562%2C37.6234" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Карта с меткой студии Ладошки"></iframe>
       </div>
     </div>
   </section>
 </main>
 
-<!-- ФУТЕР -->
+<!-- ==================== ПОДВАЛ (ФУТЕР) ==================== -->
 <footer>
   <p>© 2026 Студия творчества «Ладошки»</p>
   <p>развитие через искусство и каллиграфию</p>
   <div class="social-links">
+    <!-- Ссылки на соцсети (заглушки, ведут на #) -->
     <a href="#" title="Telegram">📱</a>
     <a href="#" title="VK">📘</a>
     <a href="#" title="WhatsApp">📞</a>
@@ -448,5 +484,8 @@
   <p style="font-size: 0.9rem; margin-top: 1.5rem; opacity: 0.7;">сделано с любовью к детям</p>
 </footer>
 
+<!-- Небольшой комментарий: все ссылки в навигации рабочие и ведут к соответствующим блокам.
+     Для плавной прокрутки используется CSS-свойство scroll-behavior: smooth.
+     Для предотвращения перекрытия заголовков липким хедером добавлено правило [id] { scroll-margin-top: 80px; } -->
 </body>
 </html>
