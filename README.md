@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Студия творчества «Ладошки»</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
       background-color: #fdf8f7;  /* нежный тёплый фон */
